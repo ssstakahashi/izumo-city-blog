@@ -5,7 +5,6 @@ import { getAllPostIds, getPostData } from "../../lib/blogs";
 
 export default function Blog({ post }) {
   const router = useRouter();
-  console.log(post)
 
   if (router.isFallback || !post) {
     return <div>Loading...</div>;
