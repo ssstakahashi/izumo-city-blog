@@ -42,7 +42,6 @@ export default function BlogPage({ post }) {
 
 export async function getStaticPaths() {
   const paths = await getAllPostIds();
-
   return {
     paths,
     fallback: false,

@@ -38,10 +38,10 @@ export default function ResultPage({ id, result}) {
                 </thead>
                 <tbody>
                 {result.map((row, index) => (
-                    <tr key={row.number}>
-                        <td className="w-8 border-t">{row.number}</td>
-                        <td className="w-8  border-t">{row.winning}</td>
-                        <td className="w-20 border-t pt-2">
+                    <tr key={row.number} className="h-24">
+                        <td className="w-8 border-t text-center p-2">{row.number}</td>
+                        <td className="w-8 border-t text-center p-2">{row.winning}</td>
+                        <td className="w-20 border-t pt-2 text-center">
                             {row.photoData ?
                                 <Image
                                 // src={row.photoData}
@@ -56,7 +56,7 @@ export default function ResultPage({ id, result}) {
                                 viewBox="0 0 24 24" 
                                 stroke-width="1.5" 
                                 stroke="currentColor" 
-                                className="w-6 h-6 m-auto"
+                                className="w-10 h-10 m-auto"
                             >
                                 <path 
                                     stroke-linecap="round"
@@ -83,7 +83,7 @@ export async function getStaticPaths() {
     const paths = await ["2021","2017","2013"].map((year) => {
         return {
             params: {
-                id: String(year),
+                year: String(year),
             },
         };
     });
@@ -95,9 +95,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({params}) {
     
-    const result = await electionResult[params.id].sort((a,b) => a.number-b.number)
+    const result = await electionResult[params.year].sort((a,b) => a.number-b.number)
     return {
-        props: { id: params.id, result }
+        props: { id: params.year, result }
     }
 }
 
