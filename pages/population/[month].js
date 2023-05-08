@@ -11,7 +11,7 @@ export default function Population({ populationData, monthData }) {
                 {monthData.map(x=>(
                     <div key={x}>
                         <Link href={`/population/${x}/`}>
-                            <h4>{x}</h4>
+                            <h4 className="mx-2">{x}</h4>
                         </Link>
                     </div>
                 ))}
