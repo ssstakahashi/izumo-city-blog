@@ -27,7 +27,7 @@ export default function Layout({ children, title="HP by Next.js"}){
                                     選挙結果
                                 </a>
                             </Link>
-                            <Link href="/population">
+                            <Link href="/population/2020年01月">
                                 <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">
                                     人口統計
                                 </a>
