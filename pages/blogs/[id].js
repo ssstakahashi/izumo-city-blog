@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import { getAllPostIds, getPostData } from "../../lib/blogs";
 
-export default function Blog({ post }) {
+export default function BlogPage({ post }) {
   const router = useRouter();
 
   if (router.isFallback || !post) {
@@ -39,6 +39,7 @@ export default function Blog({ post }) {
     </Layout>
   );
 }
+
 export async function getStaticPaths() {
   const paths = await getAllPostIds();
 
