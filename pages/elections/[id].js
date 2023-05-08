@@ -17,7 +17,7 @@ export default function ResultPage({ id, result}) {
         <div>
             <div className="flex flex-row justify-around mt-12">
                 {["2021","2017","2013"].map(x=>(
-                    <div>
+                    <div key={x}>
                         <Link href={`/elections/${x}/`}>
                             <h4 >{x}</h4>
                         </Link>

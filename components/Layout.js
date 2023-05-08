@@ -22,6 +22,11 @@ export default function Layout({ children, title="HP by Next.js"}){
                                     Blog
                                 </a>
                             </Link>
+                            <Link href="/elections/2021">
+                                <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">
+                                    選挙結果
+                                </a>
+                            </Link>
                         </div>
                     </div>
                 </nav>
