@@ -1,15 +1,22 @@
 import Layout from "../../components/Layout";
 import Link from "next/link";
 import { getPopulationData, getPopulationIds } from "../../lib/population";
+import { useRouter } from "next/router";
 // import Post from "../components/Post";
 
 export default function Population({ populationData, monthData }) {
-  return (
+    const router = useRouter();
+
+    const { month } = router.query;
+    
+    // const { month } = router.pathname;
+
+    return (
     <Layout title="population">
-        <div>
+        <div className="text-gray-700">
             <div className="flex flex-row justify-around mt-12">
                 {monthData.map(x=>(
-                    <div key={x}>
+                    <div key={x} className={ month === x ? "border-b-2 border-blue-600" : ""}>
                         <Link href={`/population/${x}/`}>
                             <h4 className="mx-2">{x}</h4>
                         </Link>
@@ -26,7 +33,7 @@ export default function Population({ populationData, monthData }) {
                             <th>男</th>
                             <th>女</th>
                             <th>総数</th>
-                            <th>調査日</th>
+                            
                             <th>世帯当たり</th>
                             <th>増減</th>
                         </tr>
@@ -34,17 +41,17 @@ export default function Population({ populationData, monthData }) {
                     <tbody>
                         {populationData &&
                             populationData.map((row,index) => (
-                            <tr key={row.id}>
-                                <td className="px-2 py-1">{row.aria}</td>
-                                <td className="cursor-pointer text-black hover:bg-gray-600">
+                            <tr key={row.id} className="hover:bg-gray-300">
+                                <td className="px-4 py-1 text-left">{row.aria}</td>
+                                <td className="px-4 py-1 text-right">
                                     {row.family}
                                 </td>
-                                <td className="px-2 py-1">{row.man}</td>
-                                <td className="px-2 py-1">{row.woman}</td>
-                                <td className="px-2 py-1">{row.total}</td>
-                                <td className="px-2 py-1">{row.date}</td>
-                                <td className="px-2 py-1">{row.perFamily}</td>
-                                <td className="px-2 py-1">{row.div}</td>
+                                <td className="px-4 py-1 text-right">{row.man}</td>
+                                <td className="px-4 py-1 text-right">{row.woman}</td>
+                                <td className="px-4 py-1 text-right">{row.total}</td>
+                                
+                                <td className="px-4 py-1 text-right">{row.perFamily}</td>
+                                <td className="px-4 py-1">{row.div}</td>
                             </tr>
                         ))}
                     </tbody>

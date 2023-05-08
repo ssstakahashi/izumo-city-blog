@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function ResultPage({ id, result}) {
-    console.log(result)
     const router = useRouter();
+    const { year } = router.query;
 
     if (router.isFallback || !result) {
         return <div>Loading...</div>;
@@ -17,7 +17,7 @@ export default function ResultPage({ id, result}) {
         <div>
             <div className="flex flex-row justify-around mt-12">
                 {["2021","2017","2013"].map(x=>(
-                    <div key={x}>
+                    <div key={x} className={ year === x ? "text-center w-36 border-b-2 border-blue-600" : "text-center w-36 border-none"}>
                         <Link href={`/elections/${x}/`}>
                             <h4 >{x}</h4>
                         </Link>
