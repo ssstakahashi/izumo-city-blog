@@ -37,7 +37,7 @@ export default function Layout({ children, title="HP by Next.js"}){
                 </nav>
             </header>
 
-            <main className="flex flex-1 justify-center items-center w-screen flex-col">
+            <main className="flex flex-1 justify-center items-center w-screen flex-col pt-8">
                 {children}
             </main>
             <footer className={"w-full h-12 flex justify-center items-center border-t"}>

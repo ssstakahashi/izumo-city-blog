@@ -33,9 +33,7 @@ export default function Population({ populationData, monthData }) {
                             <th>男</th>
                             <th>女</th>
                             <th>総数</th>
-                            
                             <th>世帯当たり</th>
-                            <th>増減</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,15 +41,11 @@ export default function Population({ populationData, monthData }) {
                             populationData.map((row,index) => (
                             <tr key={row.id} className="hover:bg-gray-300">
                                 <td className="px-4 py-1 text-left">{row.aria}</td>
-                                <td className="px-4 py-1 text-right">
-                                    {row.family}
-                                </td>
+                                <td className="px-4 py-1 text-right">{row.family}</td>
                                 <td className="px-4 py-1 text-right">{row.man}</td>
                                 <td className="px-4 py-1 text-right">{row.woman}</td>
                                 <td className="px-4 py-1 text-right">{row.total}</td>
-                                
                                 <td className="px-4 py-1 text-right">{row.perFamily}</td>
-                                <td className="px-4 py-1">{row.div}</td>
                             </tr>
                         ))}
                     </tbody>
