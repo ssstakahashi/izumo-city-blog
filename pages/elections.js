@@ -39,7 +39,6 @@ export default function ElectionPage({ electionData }) {
 }
 export async function getStaticProps() {
     const electionData = await getElectionData();
-    console.log(electionData);
     return {
         props: { electionData },
         revalidate: 3,

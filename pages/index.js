@@ -1,16 +1,14 @@
-// import { PAGES_MANIFEST } from "next/dist/shared/lib/constants";
-// import Layout from "../components/Layout";
 import Image from "next/image";
 import Link from "next/link";
 
-const Image11 = ({ src, alt }) => {
-    return (
-        <div className="relative">
-            <Image src={src} width={1400} height={2100} />
-            <p>{alt}</p>
-        </div>
-    );
-};
+// const Image11 = ({ src, alt }) => {
+//     return (
+//         <div className="relative">
+//             <Image src={src} width={1400} height={2100} />
+//             <p>{alt}</p>
+//         </div>
+//     );
+// };
 const Image13 = ({ src, alt }) => {
     return (
         <div className="m-8">

@@ -17,14 +17,14 @@ export default function ResultPage({ result, resultIds }) {
             <div className="flex flex-col items-center">
                 <div className="flex flex-row justify-around mt-12">
                     {resultIds.map((x) => (
-                        <div key={x} className={year === x ? "text-center w-36 border-b-2 border-blue-600" : "text-center w-36 border-none"}>
+                        <div key={x} className={year === x ? "text-center w-36 border-b-2 border-blue-600" : "text-center w-36 border-b-2"}>
                             <Link href={`/elections/${x}/`}>
                                 <h4>{x}</h4>
                             </Link>
                         </div>
                     ))}
                 </div>
-                <hr className="h-3 w-full" />
+                {/* <hr className="h-3 w-full" /> */}
                 <table className={"mt-12"}>
                     <thead>
                         <tr>
@@ -101,10 +101,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    console.log(params);
     const result = await getElectionResultData(params.year);
     const resultIds = await getElectionResultValueIds();
-    console.log(result);
     return {
         props: { result, resultIds },
         revalidate: 100,
