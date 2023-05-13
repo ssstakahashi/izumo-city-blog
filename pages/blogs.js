@@ -11,12 +11,12 @@ export default function BlogPage({ sortBlogData }) {
                     <h4 className="text-2xl">ブログ一覧</h4>
                 </div>
                 <div>
-                    <ul>
+                    <ul className="flex gap-8">
                         {sortBlogData &&
                             sortBlogData.map((blog, index) => (
                                 <div key={index}>
                                     <span>{index + 1}</span>
-                                    {" : "}
+                                    {" . "}
                                     <Link href={`/blogs/${blog.blogId}`}>
                                         <span className="cursor-pointer text-black hover:bg-gray-600">{blog.title}</span>
                                     </Link>
