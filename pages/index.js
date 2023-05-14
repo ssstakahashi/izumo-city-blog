@@ -77,7 +77,7 @@ export default function Home({ desc3 }) {
                             <h5 className="text-gray-400 mb-8 mt-4">NEWS</h5>
                             <div className={`${flexRow}`}>
                                 {desc3.map((desc) => (
-                                    <div className={`${flexCol} w-80`}>
+                                    <div key={desc.blogId} className={`${flexCol} w-80`}>
                                         <Image13 src="/images/titles/hansjorg-keller-p7av1ZhKGBQ-unsplash.jpg" />
                                         <div className={`flex flex-col justify-start w-64`}>
                                             <p className="text-gray-400">{desc.date || "0000-00-00"}</p>
