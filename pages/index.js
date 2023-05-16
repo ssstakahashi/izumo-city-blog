@@ -149,6 +149,6 @@ export async function getStaticProps() {
 
     return {
         props: { desc3 },
-        revalidate: 10,
+        revalidate: 5,
     };
 }

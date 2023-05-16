@@ -41,6 +41,6 @@ export async function getStaticProps() {
     const sortBlogData = await getAllPostsData();
     return {
         props: { sortBlogData },
-        revalidate: 3,
+        // revalidate: 3,
     };
 }

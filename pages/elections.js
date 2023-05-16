@@ -41,6 +41,5 @@ export async function getStaticProps() {
     const electionData = await getElectionData();
     return {
         props: { electionData },
-        revalidate: 3,
     };
 }
