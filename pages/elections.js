@@ -22,12 +22,12 @@ export default function ElectionPage({ electionData }) {
                         {electionData &&
                             electionData.map((row, index) => (
                                 <Link href={`/elections/${row.year}`} key={index}>
-                                    <tr>
-                                        <td className="m-4 p-2 text-center">{index + 1}</td>
-                                        <td className="m-4 p-4 text-left">{row.title}</td>
-                                        <td className="m-4 p-4 text-right">{row.sumTotalVoters}</td>
-                                        <td className="m-4 p-4 text-right">{row.sumVotes}</td>
-                                        <td className="m-4 p-4 text-right">{row.sumVoteRate}</td>
+                                    <tr className="hover:bg-gray-200">
+                                        <td className="p-2 text-center">{index + 1}</td>
+                                        <td className="p-4 text-left">{row.title}</td>
+                                        <td className="p-4 text-right">{row.sumTotalVoters}</td>
+                                        <td className="p-4 text-right">{row.sumVotes}</td>
+                                        <td className="p-4 text-right">{row.sumVoteRate}</td>
                                     </tr>
                                 </Link>
                             ))}

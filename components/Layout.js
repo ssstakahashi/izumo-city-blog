@@ -21,9 +21,9 @@ export default function Layout({ children, title = "Izumo-city-blog" }) {
                             <Link href="/elections">
                                 <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">選挙結果</a>
                             </Link>
-                            {/* <Link href="/population">
-                                <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">人口統計</a>
-                            </Link> */}
+                            <Link href="/population">
+                                <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">人口</a>
+                            </Link>
                         </div>
                     </div>
                 </nav>

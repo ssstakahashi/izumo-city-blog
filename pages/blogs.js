@@ -14,11 +14,11 @@ export default function BlogPage({ sortBlogData }) {
                     <ul className="flex flex-col gap-4">
                         {sortBlogData &&
                             sortBlogData.map((blog, index) => (
-                                <div key={index}>
+                                <div key={index} className="hover:bg-gray-200">
                                     <span>{index + 1}</span>
                                     {" . "}
                                     <Link href={`/blogs/${blog.blogId}`}>
-                                        <span className="cursor-pointer text-black hover:bg-gray-600">{blog.title}</span>
+                                        <span className="cursor-pointer text-black">{blog.title}</span>
                                     </Link>
                                 </div>
                             ))}
