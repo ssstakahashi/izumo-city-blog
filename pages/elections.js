@@ -6,8 +6,8 @@ import { getElectionData } from "../lib/election";
 export default function ElectionPage({ electionData }) {
     return (
         <Layout title="election">
-            <div className="flex flex-col items-center content-between">
-                <h4 className="text-3xl my-8">出雲市 選挙</h4>
+            <div className="flex flex-col items-center content-between p-8">
+                <h4 className="text-3xl m-8">出雲市 選挙</h4>
                 <table className="">
                     <thead>
                         <tr>

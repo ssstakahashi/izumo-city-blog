@@ -7,11 +7,11 @@ export default function BlogPage({ sortBlogData }) {
     return (
         <Layout title="Blog page">
             <div className="flex flex-col items-center p-8 w-full">
-                <div className="m-4">
-                    <h4 className="text-2xl">ブログ一覧</h4>
+                <div className="m-8">
+                    <h4 className="text-3xl">ブログ一覧</h4>
                 </div>
                 <div>
-                    <ul className="flex gap-8">
+                    <ul className="flex flex-col gap-4">
                         {sortBlogData &&
                             sortBlogData.map((blog, index) => (
                                 <div key={index}>
