@@ -38,11 +38,11 @@ const Image14 = ({ src, alt, href = "", description = "" }) => {
 };
 
 export default function Home({ desc3 }) {
-    const body = "flex flex-col justify-center w-full";
-    const newDiv = "flex flex-col justify-center items-center w-full";
+    const body = "flex flex-col justify-center w-screen";
+    const newDiv = "flex flex-col items-center w-full";
     const mainDiv = "flex flex-col justify-center items-center w-full pb-8 md:p-8";
 
-    const divTitleArea = "flex flex-col items-center w-full py-8 md:p-8 md:w-11/12 md:rounded";
+    const divTitleArea = "flex flex-col items-center w-full py-8 md:p-8 md:w-10/12 md:rounded-lg md:bg-gray-200 md:my-12";
     const divTitle = "text-center text-4xl mt-8";
     const divTitle2 = "text-center text-2xl mt-8";
     const divSubTitle = "text-gray-400 mb-8 mt-2 text-center";

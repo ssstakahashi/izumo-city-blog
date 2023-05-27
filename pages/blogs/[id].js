@@ -10,9 +10,8 @@ import { userState } from "../../components/store/user";
 export default function BlogPage({ post }) {
     const router = useRouter();
     const user = useRecoilValue(userState);
-    console.log(user.email);
     const stringLength = post.body1.length + post.body2.length + post.body3.length + post.body4.length + post.body5.length;
-
+    const tags = post.tags.split(",");
     if (router.isFallback || !post) {
         return <div>Loading...</div>;
     }
@@ -113,6 +112,20 @@ export default function BlogPage({ post }) {
                                 <p>更新</p>
                             </div>
                             <div>{post.date}</div>
+                        </div>
+                        <hr className="w-full border-b-1" />
+                        <div className="flex flex-row justify-between items-between w-full">
+                            <div className="px-1">
+                                <p>タグ</p>
+                            </div>
+                            <div>
+                                {tags.length > 0 &&
+                                    tags.map((tag) => (
+                                        <p className="inline-block ml-1 px-1 border-0 rounded-md bg-gray-300" key={tag}>
+                                            {tag}
+                                        </p>
+                                    ))}
+                            </div>
                         </div>
                         <hr className="w-full border-b-1" />
                         <div className="flex flex-row justify-between items-between w-full">
