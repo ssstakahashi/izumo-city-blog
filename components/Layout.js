@@ -29,7 +29,7 @@ export default function Layout({ children, title = "Izumo-city-blog" }) {
                 </nav>
             </header>
 
-            <main className="font-fancy bg-gray-50">{children}</main>
+            <main className="font-fancy bg-gray-100">{children}</main>
             <footer className={"bg-black w-full h-32 flex justify-center items-center border-t"}></footer>
         </div>
     );

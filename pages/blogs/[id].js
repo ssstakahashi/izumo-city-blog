@@ -6,6 +6,7 @@ import Image from "next/image";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../components/store/user";
+import { formatDate } from "../../lib/datetime";
 
 export default function BlogPage({ post }) {
     const router = useRouter();
@@ -104,14 +105,18 @@ export default function BlogPage({ post }) {
                             <div className="px-1">
                                 <p>公開</p>
                             </div>
-                            <div>{post.date}</div>
+                            <div>
+                                <p className="text-base">{formatDate(post.date)}</p>
+                            </div>
                         </div>
                         <hr className="w-full border-b-1" />
                         <div className="flex flex-row justify-between items-between w-full">
                             <div className="px-1">
                                 <p>更新</p>
                             </div>
-                            <div>{post.date}</div>
+                            <div>
+                                <p className="text-base">{formatDate(post.update)}</p>
+                            </div>
                         </div>
                         <hr className="w-full border-b-1" />
                         <div className="flex flex-row justify-between items-between w-full">
