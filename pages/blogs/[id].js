@@ -13,6 +13,29 @@ export default function BlogPage({ post }) {
     const user = useRecoilValue(userState);
     const stringLength = post.body1.length + post.body2.length + post.body3.length + post.body4.length + post.body5.length;
     const tags = post.tags.split(",");
+    const formattedText = post.body1;
+    const refs = [
+        {
+            title: post.refTitle1,
+            body: post.refBody1,
+        },
+        {
+            title: post.refTitle2,
+            body: post.refBody2,
+        },
+        {
+            title: post.refTitle3,
+            body: post.refBody3,
+        },
+        {
+            title: post.refTitle4,
+            body: post.refBody4,
+        },
+        {
+            title: post.refTitle5,
+            body: post.refBody5,
+        },
+    ];
     if (router.isFallback || !post) {
         return <div>Loading...</div>;
     }
@@ -20,7 +43,7 @@ export default function BlogPage({ post }) {
         <Layout title={post.title}>
             <div className="flex justify-center">
                 <div className="bg-white flex flex-col items-center m-8 w-1/2 rounded">
-                    <div className="pt-24 pb-12">
+                    <div className="pt-24 pb-12 px-4">
                         <p className="mb-4 text-3xl font-bold">{post.title}</p>
                     </div>
                     {post.photoUrl ? (
@@ -37,7 +60,7 @@ export default function BlogPage({ post }) {
                     </div>
 
                     <div className="px-12 text-lg leading-loose">
-                        <p className="mb-8">{post.body1}</p>
+                        <p className="mb-8" dangerouslySetInnerHTML={{ __html: post.body1 }} />
                     </div>
 
                     {post.photoUrl && post.photoUrl1 && (
@@ -78,8 +101,77 @@ export default function BlogPage({ post }) {
                             <Image src={post.photoUrl3} layout="fill" objectFit="contain" />
                         </div>
                     )}
+                    {post.subTitle4 && (
+                        <div className="flex flex-start w-11/12 border-b-4 px-4 mt-12 mb-8 " id={post.subTitle4}>
+                            <p className="text-xl text-left">{`${post.subTitle4}`}</p>
+                        </div>
+                    )}
+                    {post.body4 && (
+                        <div className="px-12 text-lg leading-loose">
+                            <p className="mb-8">{post.body4}</p>
+                        </div>
+                    )}
+                    {post.photoUrl4 && (
+                        <div className="relative w-full h-48 mb-8">
+                            <Image src={post.photoUrl4} layout="fill" objectFit="contain" />
+                        </div>
+                    )}
 
-                    <div></div>
+                    {post.subTitle5 && (
+                        <div className="flex flex-start w-11/12 border-b-4 px-4 mt-12 mb-8 " id={post.subTitle4}>
+                            <p className="text-xl text-left">{`${post.subTitle5}`}</p>
+                        </div>
+                    )}
+                    {post.body5 && (
+                        <div className="px-12 text-lg leading-loose">
+                            <p className="mb-8">{post.body5}</p>
+                        </div>
+                    )}
+                    {post.photoUrl5 && (
+                        <div className="relative w-full h-48 mb-8">
+                            <Image src={post.photoUrl5} layout="fill" objectFit="contain" />
+                        </div>
+                    )}
+                    {post.body6 && (
+                        <div className="px-12 text-lg leading-loose">
+                            <p className="mb-8">{post.body6}</p>
+                        </div>
+                    )}
+                    {post.body7 && (
+                        <div className="px-12 text-lg leading-loose">
+                            <p className="mb-8">{post.body7}</p>
+                        </div>
+                    )}
+                    {post.body8 && (
+                        <div className="px-12 text-lg leading-loose">
+                            <p className="mb-8">{post.body8}</p>
+                        </div>
+                    )}
+                    {post.body9 && (
+                        <div className="px-12 text-lg leading-loose">
+                            <p className="mb-8">{post.body9}</p>
+                        </div>
+                    )}
+                    {post.body10 && (
+                        <div className="px-12 text-lg leading-loose">
+                            <p className="mb-8">{post.body10}</p>
+                        </div>
+                    )}
+
+                    {refs[0].title && (
+                        <div className="flex flex-start w-11/12 border-b-4 px-4 mt-12 mb-8" id="reference">
+                            <p className="text-xl text-left">参考</p>
+                        </div>
+                    )}
+
+                    <div className="flex flex-col items-start w-full px-12 text-base leading-loose">
+                        {refs.map((ref, index) => (
+                            <div className="my-1" key={index}>
+                                <p className="text-base">{ref.title}</p>
+                                <p className="text-base">{ref.body}</p>
+                            </div>
+                        ))}
+                    </div>
                     <Link href="/blogs">
                         <div className="flex cursor-pointer my-12">
                             <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -167,6 +259,11 @@ export default function BlogPage({ post }) {
                             {post.subTitle5 && (
                                 <AnchorLink href={`#${post.subTitle5}`}>
                                     <li className="py-2 truncate">・{post.subTitle5}</li>
+                                </AnchorLink>
+                            )}
+                            {refs[0].title && (
+                                <AnchorLink href={`#reference`}>
+                                    <li className="py-2 truncate">・参考</li>
                                 </AnchorLink>
                             )}
                         </ul>

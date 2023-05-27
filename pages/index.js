@@ -6,8 +6,8 @@ import { getAllPostsData } from "../lib/blogs";
 const Image13 = ({ href, src, alt, desc }) => {
     return (
         <Link href={href}>
-            <div className="flex flex-row justify-start items-center w-full md:flex-col md:justify-center md:items-center">
-                <div className="relative w-40 h-28 mx-2 my-1 md:w-64 md:h-52">
+            <div className="flex flex-row justify-start items-center w-full md:flex-col md:justify-center">
+                <div className="relative w-40 h-24 mx-2 my-1 md:w-64 md:h-40">
                     <Image src={src} layout="fill" objectFit="cover" className="rounded-sm hover:scale-125 duration-700" />
                     <p className={`absolute top-1/2 text-white text-2xl font-bold m-0 p-0 bg-black bg-opacity-40 w-full text-center`}>{alt}</p>
                 </div>
@@ -22,8 +22,8 @@ const Image13 = ({ href, src, alt, desc }) => {
 const Image14 = ({ src, alt, href = "", description = "" }) => {
     return (
         <Link href={href}>
-            <div className="flex flex-row w-40 h-28 mx-2 my-1 lg:flex-col lg:justify-start lg:w-52 lg:h-56 lg:m-8 lg:gap-4 relative">
-                <div>
+            <div className="flex flex-row justify-start items-center w-full md:flex-col md:justify-center">
+                <div className="relative w-40 h-24 mx-2 my-1 md:w-48 md:h-28">
                     <Image src={src} layout="fill" objectFit="cover" className="rounded-sm hover:scale-125 duration-700" />
                     <p className={`absolute top-1/2 text-white text-2xl font-bold m-0 p-0 bg-black bg-opacity-40 w-full text-center`}>{alt}</p>
                 </div>
@@ -66,11 +66,7 @@ export default function Home({ desc3 }) {
                             <div className={`${blogArea3}`}>
                                 {desc3.map((desc) => (
                                     <div key={desc.blogId}>
-                                        <Image13
-                                            src="/images/titles/hansjorg-keller-p7av1ZhKGBQ-unsplash.jpg"
-                                            desc={desc}
-                                            href={`/blogs/${desc.blogId}`}
-                                        />
+                                        <Image13 src={desc.photoUrl || desc.photoUrl1} desc={desc} href={`/blogs/${desc.blogId}`} />
                                     </div>
                                 ))}
                             </div>
