@@ -11,9 +11,12 @@ import { formatDate } from "../../lib/datetime";
 export default function BlogPage({ post }) {
     const router = useRouter();
     const user = useRecoilValue(userState);
-    const stringLength = post.body1.length + post.body2.length + post.body3.length + post.body4.length + post.body5.length;
+    const stringLength =
+        post.body1.length + post.body2.length + post.body3.length + post.body4.length + post.body5.length;
     const tags = post.tags.split(",");
-    const formattedText = post.body1;
+    const exchange = (text) => {
+        return text.replace(/\n/g, "<br>");
+    };
     const refs = [
         {
             title: post.refTitle1,
@@ -41,9 +44,9 @@ export default function BlogPage({ post }) {
     }
     return (
         <Layout title={post.title}>
-            <div className="flex justify-center">
-                <div className="bg-white flex flex-col items-center m-8 w-1/2 rounded">
-                    <div className="pt-24 pb-12 px-4">
+            <div className="flex justify-center w-screen">
+                <div className="bg-white flex flex-col items-center rounded w-full md:m-8 md:w-1/2">
+                    <div className="pt-12 px-4 md:px-12 md:pt-24 md:pb-12 ">
                         <p className="mb-4 text-3xl font-bold">{post.title}</p>
                     </div>
                     {post.photoUrl ? (
@@ -59,8 +62,8 @@ export default function BlogPage({ post }) {
                         <p className="text-xl text-left">{`${post.subTitle1}`}</p>
                     </div>
 
-                    <div className="px-12 text-lg leading-loose">
-                        <p className="mb-8" dangerouslySetInnerHTML={{ __html: post.body1 }} />
+                    <div className="px-6 md:px-12 text-lg leading-loose">
+                        <p className="mb-8" dangerouslySetInnerHTML={{ __html: exchange(post.body1) }} />
                     </div>
 
                     {post.photoUrl && post.photoUrl1 && (
@@ -70,13 +73,13 @@ export default function BlogPage({ post }) {
                     )}
 
                     {post.subTitle2 && (
-                        <div className="flex flex-start w-11/12 border-b-4 px-4 mt-12 mb-8 " id={post.subTitle2}>
+                        <div className="flex flex-start w-11/12 border-b-4 px-4 mt-12 mb-8" id={post.subTitle2}>
                             <p className="text-xl text-left">{`${post.subTitle2}`}</p>
                         </div>
                     )}
                     {post.body2 && (
-                        <div className="px-12 text-lg leading-loose">
-                            <p className="mb-8">{post.body2}</p>
+                        <div className="px-6 md:px-12 text-lg leading-loose">
+                            <p className="mb-8" dangerouslySetInnerHTML={{ __html: exchange(post.body2) }} />
                         </div>
                     )}
                     {post.photoUrl2 && (
@@ -91,8 +94,8 @@ export default function BlogPage({ post }) {
                         </div>
                     )}
                     {post.body3 && (
-                        <div className="px-12 text-lg leading-loose">
-                            <p className="mb-8">{post.body3}</p>
+                        <div className="px-6 md:px-12 text-lg leading-loose">
+                            <p className="mb-8" dangerouslySetInnerHTML={{ __html: exchange(post.body3) }} />
                         </div>
                     )}
 
@@ -107,8 +110,8 @@ export default function BlogPage({ post }) {
                         </div>
                     )}
                     {post.body4 && (
-                        <div className="px-12 text-lg leading-loose">
-                            <p className="mb-8">{post.body4}</p>
+                        <div className="px-6 md:px-12 text-lg leading-loose">
+                            <p className="mb-8" dangerouslySetInnerHTML={{ __html: exchange(post.body4) }} />
                         </div>
                     )}
                     {post.photoUrl4 && (
@@ -123,8 +126,8 @@ export default function BlogPage({ post }) {
                         </div>
                     )}
                     {post.body5 && (
-                        <div className="px-12 text-lg leading-loose">
-                            <p className="mb-8">{post.body5}</p>
+                        <div className="px-6 md:px-12 text-lg leading-loose">
+                            <p className="mb-8" dangerouslySetInnerHTML={{ __html: exchange(post.body5) }} />
                         </div>
                     )}
                     {post.photoUrl5 && (
@@ -132,7 +135,7 @@ export default function BlogPage({ post }) {
                             <Image src={post.photoUrl5} layout="fill" objectFit="contain" />
                         </div>
                     )}
-                    {post.body6 && (
+                    {/* {post.body6 && (
                         <div className="px-12 text-lg leading-loose">
                             <p className="mb-8">{post.body6}</p>
                         </div>
@@ -156,7 +159,7 @@ export default function BlogPage({ post }) {
                         <div className="px-12 text-lg leading-loose">
                             <p className="mb-8">{post.body10}</p>
                         </div>
-                    )}
+                    )} */}
 
                     {refs[0].title && (
                         <div className="flex flex-start w-11/12 border-b-4 px-4 mt-12 mb-8" id="reference">
@@ -164,24 +167,37 @@ export default function BlogPage({ post }) {
                         </div>
                     )}
 
-                    <div className="flex flex-col items-start w-full px-12 text-base leading-loose">
+                    <div className="flex flex-col items-start w-full px-6 md:px-12 text-base leading-loose">
                         {refs.map((ref, index) => (
-                            <div className="my-1" key={index}>
-                                <p className="text-base">{ref.title}</p>
-                                <p className="text-base">{ref.body}</p>
+                            <div className="inline-block w-full my-1" key={index}>
+                                <p className="text-base truncate">{ref.title}</p>
+                                <a target="_blank" href={ref.body}>
+                                    <p className="text-base truncate">{ref.body}</p>
+                                </a>
                             </div>
                         ))}
                     </div>
                     <Link href="/blogs">
                         <div className="flex cursor-pointer my-12">
-                            <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                            <svg
+                                className="w-6 h-6 mr-3"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
+                                />
                             </svg>
                             <span>ブログ一覧に戻る</span>
                         </div>
                     </Link>
                 </div>
-                <div className="flex flex-col justify-start items-center w-1/5 my-8 gap-8">
+                <div className="hidden md:flex flex-col justify-start items-center w-1/5 my-8 gap-8">
                     <div className="flex flex-col justify-around items-start bg-white w-full h-48 rounded border-t-8 border-gray-500 px-4 py-2">
                         <div className="flex flex-row justify-between items-between w-full">
                             <div className="px-1">
@@ -268,7 +284,9 @@ export default function BlogPage({ post }) {
                             )}
                         </ul>
                     </div>
-                    <div className="flex justify-center items-center bg-white w-full h-96 rounded border-t-8 border-gray-500">投稿者</div>
+                    <div className="flex justify-center items-center bg-white w-full h-96 rounded border-t-8 border-gray-500">
+                        投稿者
+                    </div>
                 </div>
             </div>
         </Layout>
@@ -288,6 +306,6 @@ export async function getStaticProps({ params }) {
         props: {
             post,
         },
-        revalidate: 3,
+        revalidate: 3600 * 1,
     };
 }

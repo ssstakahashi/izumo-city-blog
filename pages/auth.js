@@ -44,7 +44,11 @@ export default function Auth() {
     return (
         <div className="flex flex-col items-center justify-center h-screen w-full gap-10">
             <div>
-                <img className="h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
+                <img
+                    className="h-12 w-auto"
+                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                    alt="Workflow"
+                />
             </div>
             <div>
                 <form className="w-80 mt-8 space-y-6" onSubmit={authUser}>

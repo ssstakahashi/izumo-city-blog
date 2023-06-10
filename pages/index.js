@@ -12,7 +12,7 @@ const Image13 = ({ href, src, alt, desc }) => {
                     <p className={`absolute top-1/2 text-white text-2xl font-bold m-0 p-0 bg-black bg-opacity-40 w-full text-center`}>{alt}</p>
                 </div>
                 <div className={`flex flex-1 flex-col justify-start md:w-64`}>
-                    <p className="text-gray-400">{desc.date || "0000-00-00"}</p>
+                    <p className="text-gray-400">{desc.update || "0000-00-00"}</p>
                     <p className="md:truncate">{desc.title}</p>
                 </div>
             </div>
