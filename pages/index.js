@@ -8,8 +8,17 @@ const Image13 = ({ href, src, alt, desc }) => {
         <Link href={href}>
             <div className="flex flex-row justify-start items-center w-full md:flex-col md:justify-center">
                 <div className="relative w-40 h-24 mx-2 my-1 md:w-64 md:h-40">
-                    <Image src={src} layout="fill" objectFit="cover" className="rounded-sm hover:scale-125 duration-700" />
-                    <p className={`absolute top-1/2 text-white text-2xl font-bold m-0 p-0 bg-black bg-opacity-40 w-full text-center`}>{alt}</p>
+                    <Image
+                        src={src}
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-sm hover:scale-125 duration-700"
+                    />
+                    <p
+                        className={`absolute top-1/2 text-white text-2xl font-bold m-0 p-0 bg-black bg-opacity-40 w-full text-center`}
+                    >
+                        {alt}
+                    </p>
                 </div>
                 <div className={`flex flex-1 flex-col justify-start md:w-64`}>
                     <p className="text-gray-400">{desc.update || "0000-00-00"}</p>
@@ -24,8 +33,17 @@ const Image14 = ({ src, alt, href = "", description = "" }) => {
         <Link href={href}>
             <div className="flex flex-row justify-start items-center w-full md:flex-col md:justify-center">
                 <div className="relative w-40 h-24 mx-2 my-1 md:w-48 md:h-28">
-                    <Image src={src} layout="fill" objectFit="cover" className="rounded-sm hover:scale-125 duration-700" />
-                    <p className={`absolute top-1/2 text-white text-2xl font-bold m-0 p-0 bg-black bg-opacity-40 w-full text-center`}>{alt}</p>
+                    <Image
+                        src={src}
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-sm hover:scale-125 duration-700"
+                    />
+                    <p
+                        className={`absolute -top-1 right-2 text-gray-800 text-lg bg-gray-50  w-1/2 text-center rounded`}
+                    >
+                        {alt}
+                    </p>
                 </div>
 
                 <div className={`flex flex-col justify-start w-48`}>
@@ -66,7 +84,11 @@ export default function Home({ desc3 }) {
                             <div className={`${blogArea3}`}>
                                 {desc3.map((desc) => (
                                     <div key={desc.blogId}>
-                                        <Image13 src={desc.photoUrl || desc.photoUrl1} desc={desc} href={`/blogs/${desc.blogId}`} />
+                                        <Image13
+                                            src={desc.photoUrl || desc.photoUrl1}
+                                            desc={desc}
+                                            href={`/blogs/${desc.blogId}`}
+                                        />
                                     </div>
                                 ))}
                             </div>
@@ -80,10 +102,14 @@ export default function Home({ desc3 }) {
                         </div>
 
                         <div className={`${blogArea4}`}>
-                            <Image14 src="/images/titles/chuttersnap-gDDas5_ALRw-unsplash.jpg" alt={"住民"} description={``} />
-                            <Image14 src="/images/pg_Izumo_logo.png" alt={"借金"} description={``} />
-                            <Image14 src="/images/pg_Izumo_logo.png" alt={"収入と支出"} description={``} />
-                            <Image14 src="/images/pg_Izumo_logo.png" alt={"産業"} description={``} />
+                            <Image14
+                                src="/images/titles/chuttersnap-gDDas5_ALRw-unsplash.jpg"
+                                alt={"暮らし"}
+                                description={``}
+                            />
+                            <Image14 src="/images/pg_Izumo_logo.png" alt={"財政"} description={``} />
+                            <Image14 src="/images/pg_Izumo_logo.png" alt={"経済"} description={``} />
+                            <Image14 src="/images/pg_Izumo_logo.png" alt={"システム"} description={``} />
                         </div>
                     </div>
 

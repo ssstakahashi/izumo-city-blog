@@ -17,7 +17,7 @@ export default function BlogPage({ post }) {
     const exchange = (text) => {
         return text.replace(/\n/g, "<br>");
     };
-    const refs = [
+    let refs = [
         {
             title: post.refTitle1,
             body: post.refBody1,
@@ -39,6 +39,7 @@ export default function BlogPage({ post }) {
             body: post.refBody5,
         },
     ];
+    refs = refs.filter((ref) => ref.body);
     if (router.isFallback || !post) {
         return <div>Loading...</div>;
     }
@@ -162,21 +163,23 @@ export default function BlogPage({ post }) {
                     )} */}
 
                     {refs[0].title && (
-                        <div className="flex flex-start w-11/12 border-b-4 px-4 mt-12 mb-8" id="reference">
-                            <p className="text-xl text-left">参考</p>
-                        </div>
-                    )}
-
-                    <div className="flex flex-col items-start w-full px-6 md:px-12 text-base leading-loose">
-                        {refs.map((ref, index) => (
-                            <div className="inline-block w-full my-1" key={index}>
-                                <p className="text-base truncate">{ref.title}</p>
-                                <a target="_blank" href={ref.body}>
-                                    <p className="text-base truncate">{ref.body}</p>
-                                </a>
+                        <>
+                            <div className="flex flex-start w-11/12 border-b-4 px-4 mt-12 mb-8" id="reference">
+                                <p className="text-xl text-left">参考</p>
                             </div>
-                        ))}
-                    </div>
+
+                            <div className="flex flex-col items-start w-full px-6 md:px-12 text-base leading-loose">
+                                {refs.map((ref, index) => (
+                                    <div className="inline-block w-full my-1" key={index}>
+                                        <p className="text-base truncate">{`${index + 1}. ${ref.title}`}</p>
+                                        <a target="_blank" href={ref.body}>
+                                            <p className="text-base truncate">{`　${ref.body}`}</p>
+                                        </a>
+                                    </div>
+                                ))}
+                            </div>
+                        </>
+                    )}
                     <Link href="/blogs">
                         <div className="flex cursor-pointer my-12">
                             <svg
@@ -247,8 +250,6 @@ export default function BlogPage({ post }) {
                             </div>
                             <div>{`${Number(stringLength).toLocaleString()} 字`}</div>
                         </div>
-
-                        {/* <div>コメント</div> */}
                     </div>
 
                     <div className="flex justify-center items-start bg-white w-full rounded border-t-8 border-gray-500">
@@ -297,7 +298,7 @@ export async function getStaticPaths() {
     const paths = await getAllPostIds();
     return {
         paths,
-        fallback: false,
+        fallback: true,
     };
 }
 export async function getStaticProps({ params }) {

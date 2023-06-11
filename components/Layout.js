@@ -6,7 +6,6 @@ import { useState } from "react";
 export default function Layout({ children, title = "Izumo-city-blog" }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => {
-        console.log("クリクリ");
         setIsMenuOpen(!isMenuOpen);
     };
     return (
@@ -62,12 +61,16 @@ export default function Layout({ children, title = "Izumo-city-blog" }) {
                         </nav>
                     </div>
                 )}
-                <nav className="hidden md:block sticky bg-gray-800">
-                    <div className="flex items-center pl-8 h-14">
-                        <div className="space-x-4">
+                <nav className="hidden md:block sticky bg-gray-400">
+                    <div className="flex items-center pl-8 py-2">
+                        <div className="mx-8">
                             <Link href="/">
-                                <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">Home</a>
+                                <>
+                                    <Image src={"/name_big_black.png"} width={136} height={28} />
+                                </>
                             </Link>
+                        </div>
+                        <div className="space-x-4">
                             <Link href="/blogs">
                                 <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">Blog</a>
                             </Link>
@@ -84,33 +87,35 @@ export default function Layout({ children, title = "Izumo-city-blog" }) {
 
             <main className="font-fancy bg-gray-100 z-0">{children}</main>
             <footer
-                className={"bg-black w-full flex justify-center items-center border-t font-fancy text-gray-100 p-8"}
+                className={
+                    " bg-gray-900 w-full flex justify-center items-center border-t font-fancy text-gray-100 py-8"
+                }
             >
                 <div className={"flex flex-col justify-center items-center w-full"}>
                     <div className={"flex justify-center items-center w-full gap-4"}>
                         <Image src={"/images/Izumo_cloud_icon.png"} width={36} height={24} />
-                        <p className="text-white text-4xl">イ ズ ブ ロ</p>
+                        <Image src={"/name_big_white.png"} width={136} height={28} />
                         <Image src={"/images/Izumo_cloud_icon.png"} width={36} height={24} />
                     </div>
 
-                    <div className={"flex flex-row justify-around items-start w-full gap-10 px-12"}>
+                    <div className={"flex flex-row justify-center items-start w-full gap-10 px-12"}>
                         <div className="hidden md:inline-block p-8">
                             <Link href="/">
-                                <p>ホーム</p>
+                                <p className="text-gray-300 hover:text-gray-700 px-3 py-2">ホーム</p>
                             </Link>
                             <Link href="/blogs">
-                                <p>ブログ</p>
+                                <p className="text-gray-300 hover:text-gray-700 px-3 py-2">ブログ</p>
                             </Link>
                             <Link href={"/elections"}>
-                                <p>選挙結果</p>
+                                <p className="text-gray-300 hover:text-gray-700 px-3 py-2">選挙結果</p>
                             </Link>
                             <Link href={"/population"}>
-                                <p>人口</p>
+                                <p className="text-gray-300 hover:text-gray-700 px-3 py-2">人口</p>
                             </Link>
                         </div>
                         <div className="p-8">
                             運営者
-                            <div className="flex flex-row justify-around">
+                            <div className="flex flex-row justify-around gap-2">
                                 <div>
                                     <a
                                         href="https://nerdcave.com/tailwind-cheat-sheet"
@@ -128,7 +133,7 @@ export default function Layout({ children, title = "Izumo-city-blog" }) {
                                         </svg>
                                     </a>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <a
                                         href="https://nerdcave.com/tailwind-cheat-sheet"
                                         target="_blank"
@@ -143,10 +148,10 @@ export default function Layout({ children, title = "Izumo-city-blog" }) {
                                             <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
                                         </svg>
                                     </a>
-                                </div>
+                                </div> */}
                                 <div>
                                     <a
-                                        href="https://nerdcave.com/tailwind-cheat-sheet"
+                                        href="https://github.com/ssstakahashi/izumo-city-blog"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -165,7 +170,7 @@ export default function Layout({ children, title = "Izumo-city-blog" }) {
                     </div>
 
                     <div className={"flex justify-center items-center w-full"}>
-                        <p className="text-gray-500 text-center text-base">©イ ズ ブ ロ</p>
+                        <p className="text-gray-500 text-center text-base">©イ ズ ブ ロ 2023</p>
                     </div>
                 </div>
             </footer>
