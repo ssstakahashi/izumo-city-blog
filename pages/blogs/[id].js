@@ -63,10 +63,11 @@ export default function BlogPage({ post }) {
                         <p className="text-xl text-left">{`${post.subTitle1}`}</p>
                     </div>
 
-                    <div className="px-6 md:px-12 text-lg leading-loose">
-                        <p className="mb-8" dangerouslySetInnerHTML={{ __html: exchange(post.body1) }} />
-                    </div>
-
+                    {post.body1 && (
+                        <div className="px-6 md:px-12 text-lg leading-loose">
+                            <p className="mb-8" dangerouslySetInnerHTML={{ __html: exchange(post.body1) }} />
+                        </div>
+                    )}
                     {post.photoUrl && post.photoUrl1 && (
                         <div className="relative w-full h-48 mb-8">
                             <Image src={post.photoUrl1} layout="fill" objectFit="contain" />
