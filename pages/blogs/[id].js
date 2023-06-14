@@ -19,32 +19,35 @@ export default function BlogPage({ post }) {
     };
     let refs = [
         {
-            title: post.refTitle1,
-            body: post.refBody1,
+            title: post.refTitle1 || null,
+            body: post.refBody1 || null,
         },
         {
-            title: post.refTitle2,
-            body: post.refBody2,
+            title: post.refTitle2 || null,
+            body: post.refBody2 || null,
         },
         {
-            title: post.refTitle3,
-            body: post.refBody3,
+            title: post.refTitle3 || null,
+            body: post.refBody3 || null,
         },
         {
-            title: post.refTitle4,
-            body: post.refBody4,
+            title: post.refTitle4 || null,
+            body: post.refBody4 || null,
         },
         {
-            title: post.refTitle5,
-            body: post.refBody5,
+            title: post.refTitle5 || null,
+            body: post.refBody5 || null,
         },
     ];
-    refs = refs.filter((ref) => ref.body);
+    // refs = refs.filter((ref) => ref.body);
+    // console.log(refs);
+    // console.log(refs.length);
+    // console.log(post.title);
     if (router.isFallback || !post) {
         return <div>Loading...</div>;
     }
     return (
-        <Layout title={post.title}>
+        <Layout title={""}>
             <div className="flex justify-center w-screen">
                 <div className="bg-white flex flex-col items-center rounded w-full md:m-8 md:w-1/2">
                     <div className="pt-12 px-4 md:px-12 md:pt-24 md:pb-12 ">
@@ -52,11 +55,11 @@ export default function BlogPage({ post }) {
                     </div>
                     {post.photoUrl ? (
                         <div className="relative w-full h-96">
-                            <Image src={post.photoUrl} layout="fill" objectFit="cover" />
+                            <Image src={post.photoUrl} layout="fill" objectFit="cover" alt={""} />
                         </div>
                     ) : (
                         <div className="relative w-full h-48">
-                            <Image src={post.photoUrl1} layout="fill" objectFit="contain" />
+                            <Image src={post.photoUrl1} layout="fill" objectFit="contain" alt={""} />
                         </div>
                     )}
                     <div className="flex flex-start w-11/12 border-b-4 px-4 mt-12 mb-8" id={post.subTitle1}>
@@ -70,7 +73,7 @@ export default function BlogPage({ post }) {
                     )}
                     {post.photoUrl && post.photoUrl1 && (
                         <div className="relative w-full h-48 mb-8">
-                            <Image src={post.photoUrl1} layout="fill" objectFit="contain" />
+                            <Image src={post.photoUrl1} layout="fill" objectFit="contain" alt="" />
                         </div>
                     )}
 
@@ -86,7 +89,7 @@ export default function BlogPage({ post }) {
                     )}
                     {post.photoUrl2 && (
                         <div className="relative w-full h-48 mb-8">
-                            <Image src={post.photoUrl2} layout="fill" objectFit="contain" />
+                            <Image src={post.photoUrl2} layout="fill" objectFit="contain" alt="" />
                         </div>
                     )}
 
@@ -103,7 +106,7 @@ export default function BlogPage({ post }) {
 
                     {post.photoUrl3 && (
                         <div className="relative w-full h-48 mb-8">
-                            <Image src={post.photoUrl3} layout="fill" objectFit="contain" />
+                            <Image src={post.photoUrl3} layout="fill" objectFit="contain" alt="" />
                         </div>
                     )}
                     {post.subTitle4 && (
@@ -118,7 +121,7 @@ export default function BlogPage({ post }) {
                     )}
                     {post.photoUrl4 && (
                         <div className="relative w-full h-48 mb-8">
-                            <Image src={post.photoUrl4} layout="fill" objectFit="contain" />
+                            <Image src={post.photoUrl4} layout="fill" objectFit="contain" alt="" />
                         </div>
                     )}
 
@@ -134,7 +137,7 @@ export default function BlogPage({ post }) {
                     )}
                     {post.photoUrl5 && (
                         <div className="relative w-full h-48 mb-8">
-                            <Image src={post.photoUrl5} layout="fill" objectFit="contain" />
+                            <Image src={post.photoUrl5} layout="fill" objectFit="contain" alt="" />
                         </div>
                     )}
                     {/* {post.body6 && (
@@ -163,24 +166,29 @@ export default function BlogPage({ post }) {
                         </div>
                     )} */}
 
-                    {refs[0].title && (
+                    {refs[0].title ? (
                         <>
                             <div className="flex flex-start w-11/12 border-b-4 px-4 mt-12 mb-8" id="reference">
                                 <p className="text-xl text-left">参考</p>
                             </div>
 
                             <div className="flex flex-col items-start w-full px-6 md:px-12 text-base leading-loose">
-                                {refs.map((ref, index) => (
-                                    <div className="inline-block w-full my-1" key={index}>
-                                        <p className="text-base truncate">{`${index + 1}. ${ref.title}`}</p>
-                                        <a target="_blank" href={ref.body}>
-                                            <p className="text-base truncate">{`　${ref.body}`}</p>
-                                        </a>
-                                    </div>
-                                ))}
+                                {refs.map((ref, index) => {
+                                    if (ref.title === null) {
+                                        return null;
+                                    }
+                                    return (
+                                        <div className="inline-block w-full my-1" key={index}>
+                                            <p className="text-base truncate">{`${index + 1}. ${ref.title}`}</p>
+                                            <a target="_blank" href={ref.body}>
+                                                <p className="text-base truncate">{`　${ref.body}`}</p>
+                                            </a>
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </>
-                    )}
+                    ) : null}
                     <Link href="/blogs">
                         <div className="flex cursor-pointer my-12">
                             <svg
@@ -299,7 +307,7 @@ export async function getStaticPaths() {
     const paths = await getAllPostIds();
     return {
         paths,
-        fallback: true,
+        fallback: false,
     };
 }
 export async function getStaticProps({ params }) {
@@ -308,6 +316,6 @@ export async function getStaticProps({ params }) {
         props: {
             post,
         },
-        revalidate: 3600 * 1,
+        revalidate: 36,
     };
 }
